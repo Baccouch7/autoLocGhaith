@@ -46,4 +46,15 @@ public class ClientController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
+
+    @Operation(description = "Rechercher les clients par nom, prénom et catégorie de véhicule")
+    @GetMapping("/findByNomAndPrenomAndCategorie/{nom}{prenom}{categorie}")
+    public List<Client> findByNomAndPrenomAndCategorie(
+            @PathVariable String nom,
+            @PathVariable String prenom,
+            @PathVariable String categorie) {
+
+        return service.findByNomAndPrenomAndCategorie(nom, prenom, categorie);
+    }
 }
+

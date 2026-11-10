@@ -14,4 +14,8 @@ public interface IClientService {
     Client update(Client client);
 
     void delete(Long id);
+
+
+
+    List<Client> findByNomAndPrenomAndCategorie(String nom, String prenom, String categorie);
 }

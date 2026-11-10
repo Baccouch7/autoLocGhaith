@@ -14,4 +14,7 @@ public interface IMaintenanceService {
     Maintenance update(Maintenance maintenance);
 
     void delete(Long id);
+    Maintenance affecterMaintenanceVehicule(Long idMaintenance, Long idVehicule);
+
 }
+

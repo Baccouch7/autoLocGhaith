@@ -27,6 +27,6 @@ public class Reservation {
     @ManyToOne
     Client client;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     Contrat contrat;
 }

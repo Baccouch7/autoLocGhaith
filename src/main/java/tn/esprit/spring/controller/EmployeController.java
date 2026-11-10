@@ -16,6 +16,7 @@ import java.util.List;
 public class EmployeController {
 
     IEmployeService service;
+    IEmployeService employeService;
 
     @Operation(description = "Cette méthode permet d'ajouter un employé")
     @PostMapping("/create")
@@ -46,4 +47,11 @@ public class EmployeController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
+    @PutMapping("/affecter-agence/{idEmploye}/{idAgence}")
+    public Employe affecterAgenceEmploye(@PathVariable Long idEmploye, @PathVariable Long idAgence) {
+        return employeService.affecterAgenceEmploye(idAgence, idEmploye);
+    }
 }
+
+
+

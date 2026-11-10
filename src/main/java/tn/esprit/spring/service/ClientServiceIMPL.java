@@ -12,6 +12,8 @@ import java.util.List;
 public class ClientServiceIMPL implements IClientService {
     ClientRepository repository;
 
+
+
     @Override
     public Client create(Client client) {
         return repository.save(client);
@@ -36,4 +38,9 @@ public class ClientServiceIMPL implements IClientService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+    @Override
+    public List<Client> findByNomAndPrenomAndCategorie(String nom, String prenom, String categorie) {
+        return repository.findByNomAndPrenomAndReservationsVehiculeCategorie(nom, prenom, categorie);
+    }
+
 }

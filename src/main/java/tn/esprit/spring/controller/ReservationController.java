@@ -17,33 +17,45 @@ public class ReservationController {
 
     IReservationService service;
 
-    @Operation(description = "Cette méthode permet d'ajouter une réservation")
+    @Operation(description = "Ajouter une réservation")
     @PostMapping("/create")
     public Reservation create(@RequestBody Reservation reservation) {
         return service.create(reservation);
     }
 
-    @Operation(description = "Cette méthode permet d'obtenir une réservation par son identifiant")
+    @Operation(description = "Obtenir une réservation par ID")
     @GetMapping("/get/{id}")
     public Reservation getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
-    @Operation(description = "Cette méthode permet de lister toutes les réservations")
+    @Operation(description = "Lister toutes les réservations")
     @GetMapping("/getAll")
     public List<Reservation> getAll() {
         return service.getAll();
     }
 
-    @Operation(description = "Cette méthode permet de mettre à jour une réservation")
+    @Operation(description = "Mettre à jour une réservation")
     @PutMapping("/update")
     public Reservation update(@RequestBody Reservation reservation) {
         return service.update(reservation);
     }
 
-    @Operation(description = "Cette méthode permet de supprimer une réservation par son identifiant")
+    @Operation(description = "Supprimer une réservation")
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id) {
         service.delete(id);
+    }
+
+    @Operation(description = "Affecter une réservation à un client")
+    @PutMapping("/affecter-client/{idReservation}/{idClient}")
+    public Reservation affecterReservationClient(@PathVariable Long idReservation, @PathVariable Long idClient) {
+        return service.affecterReservationClient(idReservation, idClient);
+    }
+
+    @Operation(description = "Affecter un contrat à une réservation")
+    @PutMapping("/affecter-contrat/{idReservation}/{idContrat}")
+    public Reservation affecterReservationContrat(@PathVariable Long idReservation, @PathVariable Long idContrat) {
+        return service.affecterReservationContrat(idReservation, idContrat);
     }
 }
